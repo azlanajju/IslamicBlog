@@ -7,45 +7,60 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>Thasbeeh Counter</title>
     <style>
-        body {
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
 
-        #counterContainer {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin-top: 50px;
-        }
+#counterContainer {
+    width: 300px;
+    padding: 40px;
+    background-color: #043927;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #343a40;
+}
 
-        #likeCount, #welcomeMessage, #uniqueId {
-            margin-bottom: 20px;
-        }
+#welcomeMessage {
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+}
 
-        #likeButton {
-            background-color: #28a745;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+#likeCount {
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #28a745; 
+}
 
-        #copyButton {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            font-size: 14px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+#uniqueId {
+    margin-bottom: 20px;
+    color: #6c757d; 
+}
+
+#likeButton, #copyButton {
+    background-color: #0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#likeButton:hover, #copyButton:hover {
+    background-color: #fff;
+    color: black;
+}
+
     </style>
 </head>
 <body>
