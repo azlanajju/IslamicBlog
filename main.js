@@ -1,9 +1,15 @@
+var current = 750.12;
+var increment = 25.27;
+var el = document.querySelector('.some-element');
+od = new Odometer({el: el, value: current, format: 'dd'});
+
+
 function incrementLike() {
     $.ajax({
         type: "POST",
         url: "increment.php",
         success: function(response) {
-            $("#likeCount").html("Thasbeeh Count: " + response);
+            $("#likeCount").html(response);
         },
         error: function(xhr, status, error) {
             console.log("Error:", xhr.responseText);
@@ -20,7 +26,8 @@ function fetchAndUpdate() {
         success: function(response) {
             var data = JSON.parse(response);
             $("#likeCount").html(data.likeCount);
-            $("#welcomeMessage").html(data.name + "!");
+            $("#odometer").html(data.likeCount); // Update the odometer with the fetched count
+            $("#welcomeMessage").html(data.name );
             $("#uniqueId").html(data.UniqueId);
         },
         error: function(xhr, status, error) {
@@ -41,16 +48,13 @@ $(document).ready(function() {
     fetchAndUpdate();
 });
 
-function copyUniqueId() {
-    var uniqueIdText = document.getElementById("uniqueId");
-    var range = document.createRange();
-    range.selectNode(uniqueIdText);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
 
-    document.execCommand("copy");
 
-    window.getSelection().removeAllRanges();
 
-    alert("Unique ID copied to clipboard!");
+function resetClick() {
+    var confirmation = confirm("Are you sure you want to reset the count?");
+
+    if (confirmation) {
+        window.location.href = "reset.php";
+    }
 }

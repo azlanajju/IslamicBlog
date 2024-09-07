@@ -1,7 +1,5 @@
-
 <?php
 session_start();
-$response="";
 include("./config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -11,10 +9,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows > 0) {
         $_SESSION['email'] = $email;
-        $response = 'Session created successfully!';
+        $response = '<div class="alert alert-success" role="alert">Session created successfully!</div>';
         header("Location: ./thasbeeh.php");
     } else {
-        $response = 'Invalid Id. Please try again.';
+        $response = '<div class="alert alert-danger" role="alert">Invalid Id. Please try again.</div>';
     }
 
     $conn->close();
@@ -25,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thasbeeh Counter</title>
-    <link rel="stylesheet" href="./login.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./test.css">
 </head>
 <body>
     <section class="main">
@@ -55,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     
                     <input type="submit" class="btn"/>
-<div class="error"><?php echo $response?></div>
+<div class="error">No id found</div>
                     <div class="not_mem">
                         <label  for="signup">New Here? <span> Register now</span></label>
                     </div>

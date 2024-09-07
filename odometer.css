@@ -1,0 +1,173 @@
+@import url("//fonts.googleapis.com/css?family=Arimo");
+
+body {
+  background-color: #000;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+}
+
+.odometer {
+  font-size: 100px;
+  border: 0;
+  border-radius: 0.25em;
+  padding: 25px;
+}
+
+.odometer .odometer-value {
+  background: linear-gradient(to bottom, #b7c03a 0%, #f0a653 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.odometer .odometer-inside:after {
+  content: ' ';
+  position: absolute;
+  top: 120px;
+  left: 0;
+  height: 2px;
+  background-color: #c0463a;
+  width: 100%;
+  margin: 0 auto;
+  background-image: -webkit-gradient(linear, left bottom, right bottom, color-stop(0.02, black), color-stop(0.5, #c0463a), color-stop(0.98, black));
+}
+
+.odometer.odometer-auto-theme .odometer-digit {
+  border-radius: 0;
+  box-shadow: none;
+  background: #000;
+  font-size: 75px;
+  vertical-align: baseline;
+  -webkit-box-reflect: below -20px -webkit-gradient(linear, right top, right bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.9)));
+}
+
+
+
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-up .odometer-ribbon-inner {
+  transition: transform 5s;
+}
+
+
+
+
+
+
+.bismillah img {
+  height: 200px;
+  margin: 20px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.9));
+}
+
+
+#likeCount::before{
+  content: "Counted: ";
+}
+#likeCount {
+  font-size: 13px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 10px;
+
+}
+
+#uniqueId {
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+#likeButton,
+#copyButton {
+  background-color: #0000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#likeButton:hover,
+#copyButton:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+.navbar #welcomeMessage {
+  margin-bottom: 20px;
+  background: linear-gradient(to bottom, #b7c03a 0%, #f0a653 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  
+
+}
+
+#likeButton {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 50%;
+
+}
+
+#likeButton img {
+  height: 150px;
+  width: 150px;
+  filter: drop-shadow(2px 2px 4px rgb(0, 0, 0, ));
+
+
+}
+
+@media (max-width:780px) {
+  .odometer-digit {
+    /* font-size: 10px !important; */
+  }
+
+  .bismillah img {
+    height: 150px;
+  }
+}
+
+
+.reset {
+  color: red;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  padding: 10px;
+  cursor:pointer;
+}
+.logout{
+  padding: 0;
+  margin: 0;
+}
+.logout a{
+  position: fixed;
+  top: 50%;
+  background: red;
+  padding: 5px 10px;
+  right: 0;
+  margin: 0;
+  transform: rotate(-90deg);
+  text-decoration: none;
+  font-weight: bold;
+  color: white !important;
+  border-radius: 10px 10px 0px 0px;
+  margin-right: -20px;
+  filter: drop-shadow(-2px -2px 10px rgba(184, 181, 7, 0.473));
+
+}

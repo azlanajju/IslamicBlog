@@ -1,23 +1,27 @@
 <?php
 include("./config.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $prefix = 'TH';
-    $currentYear = date('m');
-    $randomNumericPart = rand(10, 99);
-    $UniqueId = $prefix . $currentYear . $randomNumericPart;
     $name = $_POST["name"];
+    $email = $_POST["email"]; // Added email variable
 
-    $checkQuery = "SELECT * FROM Thasbeeh WHERE UniqueId = '$UniqueId'";
+    // Check if the email already exists in the database
+    $checkQuery = "SELECT * FROM Thasbeeh WHERE email = '$email'";
     $checkResult = $conn->query($checkQuery);
 
     if ($checkResult->num_rows > 0) {
-        echo '<div class="alert alert-danger" role="alert">Id already exists. Please choose a different Id.</div>';
+        // If email exists, login
+        session_start();
+        $_SESSION['email'] = $email;
+
+        header("Location: thasbeeh.php");
+        exit();
     } else {
-        $insertQuery = "INSERT INTO Thasbeeh (name, UniqueId, Thasbeeh_count) VALUES ('$name', '$UniqueId', 0)";
+        // If email doesn't exist, sign up
+        $insertQuery = "INSERT INTO Thasbeeh (name, email, Thasbeeh_count) VALUES ('$name', '$email', 0)"; // Removed UniqueId from the query
 
         if ($conn->query($insertQuery) === TRUE) {
             session_start();
-            $_SESSION['UniqueId'] = $UniqueId;
+            $_SESSION['email'] = $email;
 
             header("Location: thasbeeh.php");
             exit();

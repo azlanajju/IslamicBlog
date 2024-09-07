@@ -1,23 +1,20 @@
 <?php
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "ajax");
+include("./config.php");
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_SESSION['UniqueId'])) {
-        $UniqueId = $_SESSION['UniqueId'];
-        $query = "SELECT Thasbeeh_count FROM Thasbeeh WHERE UniqueId = '$UniqueId'";
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+        $query = "SELECT Thasbeeh_count FROM Thasbeeh WHERE email = '$email'";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
             $row = mysqli_fetch_assoc($result);
             $currentLikes = $row['Thasbeeh_count'];
             $newLikes = $currentLikes + 1;
-            $updateQuery = "UPDATE Thasbeeh SET Thasbeeh_count = $newLikes WHERE UniqueId = '$UniqueId'";
+            $updateQuery = "UPDATE Thasbeeh SET Thasbeeh_count = $newLikes WHERE email = '$email'";
             $updateResult = mysqli_query($conn, $updateQuery);
 
             if ($updateResult) {
